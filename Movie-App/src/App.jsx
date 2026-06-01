@@ -1,22 +1,20 @@
-import "./App.css";
+import "./css/App.css";
+import MovieCard from "./components/MovieCard";
+import Favorites from "./pages/Favorites";
+import Home from "./pages/Home";
+import { Routes, Route } from "react-router-dom";
+import NotFound from "./pages/NotFound";
+import Layout from "./components/Layout";
 
 function App() {
   return (
-    <>
-      <Text display="Whats up" />
-      <Text display="Hello">
-        <h1>I am children</h1>
-      </Text>
-    </>
-  );
-}
-
-function Text({ display, children }) {
-  return (
-    <div>
-      <p>{display}</p>
-      <h2>{children}</h2>
-    </div>
+    <Routes>
+      <Route element={<Layout />}>
+        <Route path="/" element={<Home />} />
+        <Route path="/favorites" element={<Favorites />} />
+      </Route>
+      <Route path="*" element={<NotFound />} />
+    </Routes>
   );
 }
 
